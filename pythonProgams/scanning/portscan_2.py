@@ -1,12 +1,12 @@
 #!/usr/bin/python
 
 import socket
+from termcolor import colored
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socket.setdefaulttimeout(2) #timeout after 2s
 
 host = input("[*] enter the host to scan  :");
-port = int(input("[*] enter the port to scan  :"));
 
 def portscanner(port):
     if sock.connect_ex((host, port)):
@@ -14,4 +14,5 @@ def portscanner(port):
     else:
         print ("Port %d is open" % (port))
 
-portscanner(port)
+for port in range(1,100):
+    portscanner(port)
